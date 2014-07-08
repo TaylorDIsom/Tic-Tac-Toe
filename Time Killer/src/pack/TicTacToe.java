@@ -77,6 +77,7 @@ public class TicTacToe {
 		
 		System.out.println("hello world!");
 		TicTacToe t = new TicTacToe();
+		t.takeTurn(xPosition.left, yPosition.top);
 		
 	}
 
