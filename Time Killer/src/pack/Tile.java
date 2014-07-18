@@ -7,7 +7,7 @@ public class Tile {
 	private yPosition yPos;
 	private int value;
 	
-	public Tile(xPosition x, yPosition y){
+	public Tile(yPosition y, xPosition x){
 		xPos = x;
 		yPos = y;
 		value = 0;

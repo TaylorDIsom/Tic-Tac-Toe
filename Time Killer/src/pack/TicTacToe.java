@@ -7,15 +7,20 @@ import java.util.List;
 public class TicTacToe {
 	
 	//int [][] board;
-	int playersTurn;
-	ArrayList <Tile> board;
+	private int playersTurn;
+	private int turnsTaken;
+	//ArrayList <Tile> board;
+	private Board board;
 	
 	public TicTacToe(){
-		board = new ArrayList <Tile>();
-		initBoard();
+		//board = new ArrayList <Tile>();
+		//initBoard();
+		board = new Board();
 		playersTurn = 1;
+		turnsTaken = 0;
 	}
 	
+	/*
 	public void initBoard(){
 		List <xPosition> xValues = Arrays.asList(xPosition.values());
 		List <yPosition> yValues = Arrays.asList(yPosition.values());
@@ -25,11 +30,12 @@ public class TicTacToe {
 				xPosition x = xValues.get(i);
 				yPosition y = yValues.get(j);
 				//System.out.println(""+y+" "+x);
-				Tile t = new Tile(x,y);
+				Tile t = new Tile(y, x);
 				board.add(t);				
 			}			
 		}
 	}
+	*/
 	
 	public void takeTurn(xPosition x, yPosition y){
 		int index = getIndex(x,y);
