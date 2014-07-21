@@ -3,13 +3,11 @@ package pack;
 
 public class Tile {
 	
-	private xPosition xPos;
-	private yPosition yPos;
+	private Position pos;
 	private int value;
 	
-	public Tile(yPosition y, xPosition x){
-		xPos = x;
-		yPos = y;
+	public Tile(Position pos){
+		this.pos = pos;
 		value = 0;
 		
 	}
@@ -22,22 +20,12 @@ public class Tile {
 		return value;
 	}
 	
-	public void setX(xPosition x){
-		xPos = x;
+	public void setPos(Position pos){
+		this.pos = pos;
 	}
 	
-	public xPosition getX(){
-		return xPos;
+	public Position getPos(){
+		return pos;
 	}
-
-	
-	public void setY(yPosition y){
-		yPos = y;
-	}
-	
-	public yPosition getY(){
-		return yPos;
-	}
-	
 	
 }

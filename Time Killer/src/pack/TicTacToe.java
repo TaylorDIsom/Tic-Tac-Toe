@@ -1,75 +1,38 @@
 package pack;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Random;
 
 public class TicTacToe {
 	
-	//int [][] board;
 	private int playersTurn;
 	private int turnsTaken;
-	//ArrayList <Tile> board;
 	private Board board;
 	
 	public TicTacToe(){
-		//board = new ArrayList <Tile>();
-		//initBoard();
+		newGame();
+	}
+
+	public void newGame(){
 		board = new Board();
 		playersTurn = 1;
 		turnsTaken = 0;
-	}
-	
-	/*
-	public void initBoard(){
-		List <xPosition> xValues = Arrays.asList(xPosition.values());
-		List <yPosition> yValues = Arrays.asList(yPosition.values());
-		for (int j = 0; j < yValues.size(); ++j){
-			for (int i = 0; i < xValues.size(); ++i){
-				//System.out.println(""+i+", "+j);
-				xPosition x = xValues.get(i);
-				yPosition y = yValues.get(j);
-				//System.out.println(""+y+" "+x);
-				Tile t = new Tile(y, x);
-				board.add(t);				
-			}			
+		while(!isGameOver()){
+			Random rand = new Random();
+			int y = rand.nextInt(3);
+			int x = rand.nextInt(3);
+			Position p = new Position(yPosition.values()[y],xPosition.values()[x]);
+			takeTurn(p);
 		}
 	}
-	*/
 	
-	public void takeTurn(xPosition x, yPosition y){
-		int index = getIndex(x,y);
-		Tile t = board.get(index);
+	public void takeTurn(Position p){
+		Tile t = board.getTile(p);
 		if (t.getValue() == 0){
 			t.setValue(playersTurn);
 			swapTurns();
 		}
 	}
-	
-	public int getIndex(xPosition x, yPosition y){
-		int xIndex = 0;
-		int yIndex = 0;
-		if (y == yPosition.top){
-			yIndex = 0;
-		}
-		else if (y == yPosition.middle){
-			yIndex = 3;
-		}
-		else {
-			yIndex = 6;
-		}
-		if (x == xPosition.left){
-			xIndex = 0;
-		}
-		else if (x == xPosition.center){
-			xIndex = 1;
-		}
-		else {
-			xIndex = 2;
-		}
-		return xIndex + yIndex;
-	}
-	
+
 	public void swapTurns(){
 		if (playersTurn == 1){
 			playersTurn = 2;
@@ -77,14 +40,23 @@ public class TicTacToe {
 		else {
 			playersTurn = 1;
 		}
+		turnsTaken++; 
+	}
+	
+	public boolean isGameOver(){
+		boolean bool = false;
+		if (turnsTaken > 8){
+			return true;
+		}
+		return bool;
 	}
 	
 	public static void main (String [] args){
 		
 		System.out.println("hello world!");
 		TicTacToe t = new TicTacToe();
-		t.takeTurn(xPosition.left, yPosition.top);
-		
+		t.board.print();
+		System.out.println("done");
 	}
 
 }
